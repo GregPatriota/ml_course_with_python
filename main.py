@@ -2,6 +2,7 @@ from dataset_iris.class01 import load_dataset, plot02, sort_asc
 from os import path
 from pandas_dataframe.class01 import LittlePanda
 from pandas_dataframe.class02 import KungFuPanda
+from pandas_dataframegroupeby.class01 import GroupByDataFrama
 
 if __name__ == '__main__':
     # data = load_dataset(path.join('dataset_iris', 'iris.data'))
@@ -29,9 +30,14 @@ if __name__ == '__main__':
     # print('After')
     # print(little_panda.to_print())
 
-    kungfu = KungFuPanda()
-    kungfu.load_from_file(path.join('pandas_dataframe', 'copacabana.csv'))
-    ret = kungfu.get_where('DistPraia', ' <= 40')
-    print(ret)
+    # kungfu = KungFuPanda()
+    # kungfu.load_from_file(path.join('pandas_dataframe', 'copacabana.csv'))
+    # ret = kungfu.get_where('DistPraia', ' <= 40')
+    # print(ret)
+
+    data = GroupByDataFrama(path.join('pandas_dataframegroupeby', 'original.csv'))
+    data.group_by_column('state')
+    data.filter_lambda(lambda x: x['votes'].sum() > 1000000)
+
 
 
